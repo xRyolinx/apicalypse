@@ -22,7 +22,7 @@ const Card = ({className, classNameImg, img, title, content}) => {
         </div>
 
         {/* text */}
-        <div className='text-gris-100 bg-lue-200 mt-auto
+        <div className='text-gris-300 bg-lue-200 mt-auto
         pt-[10px]'>
             <p className='pb-[20px] text-[20px] font-semibold'>
                 {title}
