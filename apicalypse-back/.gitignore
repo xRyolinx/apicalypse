@@ -1,0 +1,4 @@
+//add the things that i should ignore
+node_modules
+dist
+.env
