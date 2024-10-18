@@ -1,6 +1,7 @@
 
 import { MdArrowRightAlt } from "react-icons/md";
 import img1 from "../../assets/img/hero/imgHome1.png"
+import img2 from "../../assets/img/hero/imgHome2.png"
 import './home.css'
 import LogoSlider from "./LogoSlider"
 
@@ -62,8 +63,9 @@ const HomePage = () => {
           </div>
 
           {/* img */}
-          <div className=" bg-red-00 w-[40%]">
+          <div className=" bg-red-00 w-[40%] relative">
             <img className="w-full rounded-[30px]" src={img1} alt="" />
+            <img className="w-[50%] absolute top-[40%] left-[-15%]" src={img2} alt="" />
           </div>
         </section>
       </div>
