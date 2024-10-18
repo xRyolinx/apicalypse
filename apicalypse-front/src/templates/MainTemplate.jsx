@@ -10,7 +10,7 @@ const MainTemplate = () => {
       <Navbar />
       <Outlet />
     </>
-  )
+  ) 
 }
 
 export default MainTemplate
