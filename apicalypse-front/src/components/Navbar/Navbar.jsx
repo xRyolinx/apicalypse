@@ -41,8 +41,9 @@ const linkTransparants = [
     '',
 ]
 // liens où show = true
-const linkShow = [
-    '/',
+const linkNotShow = [
+    '/signup',
+    '/signin',
 ]
 
 const Navbar = () => {
@@ -64,8 +65,8 @@ const Navbar = () => {
         setNavTransparent(pathIncluded)
         setTransparent(pathIncluded)
 
-        const showIncluded = linkShow.includes(path)
-        setShow(showIncluded)
+        const showNavEl = !linkNotShow.includes(path)
+        setShow(showNavEl)
     }, [path])
 
     // change color while scrolling
@@ -92,8 +93,8 @@ const Navbar = () => {
     }, [path, transparent, setTransparent])
 
     // style
-    const bg = transparent ? 'bg-transparent' : 'bg-main'
-    const bgNav = navTransparent ? 'bg-transparent' : 'bg-main'
+    const bg = transparent ? 'bg-transparent' : (show ? 'bg-main' : 'bg-main lg:bg-transparent')
+    const bgNav = navTransparent ? 'bg-transparent' : (show ? 'bg-main' : 'bg-main lg:bg-transparent')
     const style = {
         transition: 'background-color 0.4s',
     }
@@ -133,9 +134,9 @@ const Navbar = () => {
 
             {/* nav get started */}
             <div className={`${!show ? 'hidden' : 'lg:flex'} hidden bg-red-00 h-full lg:w-[15%] justify-center items-center`}>
-                <button className="bg-black text-white rounded-full px-[25px] py-[10px]"
+                <button className="bg-black text-white rounded-full px-[30px] py-[10px]"
                 onClick={()=>navigate('/signup')}>
-                    Get Started
+                    <span className="pb-[1px] block">Get Started</span>
                 </button>
             </div>
 

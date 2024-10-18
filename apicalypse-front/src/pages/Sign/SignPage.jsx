@@ -10,7 +10,7 @@ const Template = ({isLogin = true}) => {
     )
   }
   return (
-    <main className="bg-main pb-[200px]">
+    <main className="bg-main pb-[20px]">
         <section className="bg-white w-full max-w-[550px]
         mx-auto pb-[40px] px-[40px]
         rounded-lg">
@@ -44,10 +44,10 @@ const Template = ({isLogin = true}) => {
 
           {/* champs */}
           {isLogin ? null :
-            <Champ name='username'/>
+            <Champ title="Username" name='username'/>
           }
-          <Champ name='email' type="email"/>
-          <Champ name='password' type="password"/>
+          <Champ title="Email" name='email' type="email"/>
+          <Champ title="Password" name='password' type="password"/>
 
           {/* button */}
           <button className="bg-black text-white

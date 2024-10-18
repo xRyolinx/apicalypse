@@ -1,11 +1,9 @@
+import { MdTitle } from "react-icons/md"
 
-const Champ = ({ name, type = "text" }) => {
-    function capitalize(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+const Champ = ({ title, name, type = "text" }) => {
     return (
         <div className="my-[15px]">
-            <p className="text-gris-200 pb-[8px]">{capitalize(name)}</p>
+            <p className="text-gris-200 pb-[8px]">{title}</p>
             <input autoComplete="off" className="outline-none
             border-solid border-gris-50 border-[1px]
             px-[15px] py-[10px]

@@ -9,14 +9,14 @@ const NavElement = ({ link, content }) => {
     }
 
     // class
-    const navElementClass = `text-sm font-medium no-underline font-sans
-    text-black py-3 px-1 border-b-2 border-transparent my-2
+    const navElementClass = `text-sm no-underline font-sans
+    text-black py-3 px-1 border-b-2 my-2
     lg:py-[6px] lg:border-solid lg:my-0
     hover:border-black`
     const getNavElementClass = ({ isActive }) =>
         isActive
             ? navElementClass + ' font-bold border-black'
-            : navElementClass
+            : navElementClass + ' font-medium border-transparent'
 
     // get setToggle from context
     const { setToggle } = useNavToggle()

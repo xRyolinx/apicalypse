@@ -1,0 +1,8 @@
+:root {
+    --col1: #F6F8FD;
+    --col2: rgba(246, 248, 253, 0.4);
+}
+
+.hero {
+   background: linear-gradient(to bottom right, var(--col1) 0%, var(--col1) 50%, var(--col2) 50%, var(--col2) 100%);
+}
