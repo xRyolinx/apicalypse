@@ -16,23 +16,23 @@ const heightSmall = 69
 // liens
 const links = [
     {
-        link: '/',
+        link: '#home',
         content: 'Home',
     },
     {
-        link: '/about',
-        content: "About",
+        link: '#clients',
+        content: "Clients",
     },
     {
-        link: '/blog',
-        content: "Blog",
+        link: '#features',
+        content: "Features",
     },
     {
-        link: '/services',
-        content: 'Services',
+        link: '#testimonials',
+        content: 'Testimonials',
     },
     {
-        link: '/contact',
+        link: '#contact',
         content: 'Contact',
     },
 ]
@@ -123,7 +123,7 @@ const Navbar = () => {
             <div className={`bg-red-00 h-[70%] lg:h-[75%]`}>
                 <NavLink className={`h-full lg:flex-row-reverse no-underline flex justify-center items-center`} to="/">
                     <p className="text-xl font-bold pr-[10px]">FinanceIT</p>
-                    <div className={`h-full aspect-square p-1 lg:p-2 bg-main rounded-full truncate`}>
+                    <div className={`h-full aspect-square p-1 lg:p-3 rounded-full truncate`}>
                         <img className={`h-full`} src={logo} alt="" />
                     </div>
                 </NavLink>

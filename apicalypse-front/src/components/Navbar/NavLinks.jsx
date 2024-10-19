@@ -1,7 +1,6 @@
 import NavElement from './NavElement'
 
 const NavLinks = ({ links, className }) => {
-
     // component
     return (
         <div className={`${className} hidden flex-row justify-between items-center

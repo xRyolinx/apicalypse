@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Card = ({className, classNameImg, img, title, content}) => {
+const ServiceCard = ({className, classNameImg, img, title, content}) => {
   return (
-    <article className={`bg-white rounded-[30px]
+    <article className={`bg-white rounded-[30px] col-span-10
     flex flex-col
     pt-[20px] pb-[30px] px-[30px]
     ${className}`}>
@@ -35,4 +35,4 @@ const Card = ({className, classNameImg, img, title, content}) => {
   )
 }
 
-export default Card
+export default ServiceCard
