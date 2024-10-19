@@ -5,11 +5,7 @@ import sequelize from './config/db.js';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/user.js';
 import reportsRoutes from './routes/reports.js';
-
-/*
-import dashboardRoutes from './routes/dashboard.js';
-import expensesRoutes from './routes/expenses.js';
-*/
+//import dashboardRoutes from './routes/dashboard.js';
 
 const app = express();
 
@@ -19,12 +15,9 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/reports', reportsRoutes);
+app.use('/api/reports', reportsRoutes);
+//app.use('/dashboard', dashboardRoutes);
 
-/*
-app.use('/dashboard', dashboardRoutes);
-app.use('/expenses', expensesRoutes);
-*/
 
 // 
 app.get('/', (req, res) => {

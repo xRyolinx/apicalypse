@@ -11,7 +11,7 @@ const FinancialReport = sequelize.define('FinancialReport', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'Users', // Ensure this matches the User model
+      model: 'User', // Ensure this matches the User model
       key: 'id',
     },
   },
@@ -19,7 +19,7 @@ const FinancialReport = sequelize.define('FinancialReport', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'ReportTypes', // Ensure this matches the ReportType model
+      model: 'ReportType', 
       key: 'report_id',
     },
   },
