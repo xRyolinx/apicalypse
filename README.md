@@ -157,7 +157,7 @@ Consider reducing discretionary expenses to maintain positive cash flow.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/repo-name.git
+   git clone https://github.com/xRyolinx/apicalypse.git
    ```
 
 2. Install dependencies:
@@ -168,14 +168,10 @@ Consider reducing discretionary expenses to maintain positive cash flow.
 3. Start the development server:
    ```bash
    npm run dev
+   nodemon app
    ```
 
-4. Backend setup:
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   uvicorn main:app --reload
-   ```
+
 
 5. Access the app at `https://apicalypse.vercel.app/`.
 
