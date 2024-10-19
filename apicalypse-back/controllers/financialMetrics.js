@@ -1,4 +1,4 @@
-import FinancialMetric from '../models/FinancialMetric.js';
+import { FinancialMetric } from '../models/index.js';
 
 const createFinancialMetric = async (req, res) => {
     const { user_id, metric_type_id, category, amount } = req.body;

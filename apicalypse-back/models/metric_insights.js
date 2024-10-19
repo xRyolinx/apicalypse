@@ -1,5 +1,3 @@
-
-
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
@@ -13,7 +11,7 @@ const MetricInsights = sequelize.define('MetricInsights', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'FinancialMetrics',
+      model: 'FinancialMetrics', // Ensure this matches the FinancialMetric model
       key: 'id',
     },
   },

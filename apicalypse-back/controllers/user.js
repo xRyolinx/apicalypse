@@ -1,5 +1,6 @@
-import { readFile, utils } from 'xlsx';
-import { User, Expense, FinancialMetric } from '../models';
+import pkg from 'xlsx';
+const { readFile, utils } = pkg;
+import { User, FinancialMetric, Expense } from '../models/index.js';
 
 // Method for uploading financial data (file upload)
 export async function addFinancialData(req, res) {
@@ -43,8 +44,7 @@ export async function addFinancialData(req, res) {
 
     res.status(200).send('File uploaded and data saved successfully.');
   } catch (error) {
-    console.error('Error uploading file:', error);
-    res.status(500).send('Internal Server Error.');
+    res.status(500).send(error.message);
   }
 }
 

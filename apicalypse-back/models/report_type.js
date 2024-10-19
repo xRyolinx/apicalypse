@@ -1,25 +1,20 @@
-
-
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
-const FinancialMetricType = sequelize.define('FinancialMetricType', {
-  id: {
+const ReportType = sequelize.define('ReportType', {
+  report_id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
-  type_name: {
+  report_type: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: true,
+    comment: 'Type of the report (e.g., income statement, cash flow)',
   },
 }, {
-  tableName: 'financial_metric_types',
+  tableName: 'report_types',
   timestamps: false,
 });
 
-export default FinancialMetricType;
+export default ReportType;

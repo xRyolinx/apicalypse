@@ -2,13 +2,12 @@ import { User } from '../models/index.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
-dotenv.config();
 import validator from 'validator';
 
-
+dotenv.config();
 
 const registerUser = async (req, res) => {
-    const { email, password, role_id } = req.body;
+    const { email, password, role } = req.body;
 
     try {
         // Validate email format and password length
@@ -23,8 +22,8 @@ const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user using the User model
-        const newUser = await User.create({ email, password_hash: hashedPassword, role_id });
-        const token = jwt.sign({ id: newUser.toJSON().id, role_id: newUser.toJSON().role_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const newUser = await User.create({ email, password_hash: hashedPassword, role }); 
+        const token = jwt.sign({ id: newUser.id, role: newUser.role }, process.env.JWT_SECRET, { expiresIn: '1h' }); // Update role_id to role
         res.status(201).json({ user: newUser.toJSON(), token });
     } catch (error) {
         // Handle duplicate user or validation errors
@@ -54,7 +53,7 @@ const loginUser = async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ id: user.id, role_id: user.role_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' }); // Update role_id to role
         res.json({ token });
     } catch (error) {
         res.status(401).json({ error: error.message });

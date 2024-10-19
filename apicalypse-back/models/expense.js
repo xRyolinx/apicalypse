@@ -13,7 +13,7 @@ const Expense = sequelize.define('Expense', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'Users', // Assumes your User model is named 'Users'
+      model: 'Users', // Ensure the model name matches
       key: 'id',
     },
     comment: 'Reference to the user who logged the expense',
@@ -39,6 +39,21 @@ const Expense = sequelize.define('Expense', {
     allowNull: true,
     comment: 'Percentage change compared to the previous period',
   },
+  insight: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    comment: 'AI-generated insight regarding the expense',
+  },
+  recommendation: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    comment: 'AI-generated recommendations for future planning',
+  },
+  shortcut: {
+    type: DataTypes.ENUM('over the budget', 'way over the budget', 'consider adjusting'),
+    allowNull: true,
+    comment: 'Shortcut to describe the budget situation',
+  },
   expense_date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
@@ -50,4 +65,4 @@ const Expense = sequelize.define('Expense', {
   comment: 'Stores individual expense entries for users',
 });
 
-module.exports = Expense;
+export default Expense;

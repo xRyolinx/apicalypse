@@ -1,4 +1,3 @@
-
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
@@ -12,13 +11,17 @@ const FinancialReport = sequelize.define('FinancialReport', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'Users',
+      model: 'Users', // Ensure this matches the User model
       key: 'id',
     },
   },
-  report_type: {
-    type: DataTypes.STRING,
+  report_type_id: {
+    type: DataTypes.UUID,
     allowNull: false,
+    references: {
+      model: 'ReportTypes', // Ensure this matches the ReportType model
+      key: 'report_id',
+    },
   },
   start_date: {
     type: DataTypes.DATE,

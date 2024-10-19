@@ -1,8 +1,5 @@
-
-
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
-import validator from 'validator';
 
 const User = sequelize.define('User', {
   id: {
@@ -30,13 +27,9 @@ const User = sequelize.define('User', {
       },
     },
   },
-  role_id: {
-    type: DataTypes.UUID,
+  role: {
+    type: DataTypes.ENUM('admin', 'financial manager', 'user'),
     allowNull: false,
-    references: {
-      model: 'Roles', // Name of the referenced model
-      key: 'id', // Key in the referenced model
-    },
   },
   created_at: {
     type: DataTypes.DATE,
