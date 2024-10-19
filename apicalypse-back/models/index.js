@@ -8,7 +8,7 @@ import FinancialReport from './financial_reports.js';
 import FinancialMetric from './financial_metric.js';
 import UserMetrics from './user_metrics.js';
 import MetricInsights from './metric_insights.js';
-import ReportType from './report_type.js'; 
+
 
 // Define relationships
 User.hasMany(Expense, {
@@ -51,15 +51,7 @@ MetricInsights.belongsTo(FinancialMetric, {
     targetKey: 'id',
 });
 
-FinancialReport.belongsTo(ReportType, {
-    foreignKey: 'report_type_id',
-    targetKey: 'report_id',
-});
 
-ReportType.hasMany(FinancialReport, {
-    foreignKey: 'report_type_id',
-    sourceKey: 'report_id',
-});
 
 // UserMetrics relationships
 User.hasMany(UserMetrics, {
@@ -83,4 +75,4 @@ UserMetrics.belongsTo(FinancialMetric, {
 });
 
 // Export models
-export { User, Expense, FinancialReport, FinancialMetric, UserMetrics, MetricInsights, ReportType };
+export { User, Expense, FinancialReport, FinancialMetric, UserMetrics, MetricInsights };
