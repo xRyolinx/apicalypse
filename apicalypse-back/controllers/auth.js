@@ -8,7 +8,8 @@ dotenv.config();
 
 const registerUser = async (req, res) => {
     const { email, password, role } = req.body;
-
+    console.log(email, password, role)
+    
     try {
         // Validate email format and password length
         if (!validator.isEmail(email)) {

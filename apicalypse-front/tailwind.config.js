@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         "main": "#F6F8FD",
+        "main2": "#D5E1FF",
         "gris" : {
           50 : "#66666640",
           100: "#333333B2",
