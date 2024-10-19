@@ -19,7 +19,7 @@ const UserMetrics = sequelize.define('UserMetrics', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'FinancialMetrics', // Ensure this matches the FinancialMetric model
+      model: 'FinancialMetric', 
       key: 'id',
     },
   },

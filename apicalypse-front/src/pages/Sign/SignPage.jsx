@@ -1,14 +1,40 @@
 import { Link } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc";
 import Champ from "../../components/Input/Champ";
-
+import { userLogin, userRegister } from "../../api/auth";
+import { useEffect, useState } from "react";
+import { authStore } from "../../state/authStore";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Template = ({isLogin = true}) => {
+  const {saveToken} = authStore()
+
   const Line = ({className, ...rest}) => {
     return (
       <div {...rest} className={`{${className} w-full border-solid border-[1px] text-gris-50`}></div>
     )
   }
+
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+
+  const handleClick = () => {
+    if (isLogin) {
+      userLogin(email, password)
+      .then((res)=>res.data)
+      .then((data) => {
+        saveToken(data['token'])
+        console.log("connected !")
+      })
+    } else {
+      userRegister(username, email, password)
+    }
+  }
+
+
   return (
     <main className="bg-main pb-[20px]">
         <section className="bg-white w-full max-w-[550px]
@@ -44,14 +70,16 @@ const Template = ({isLogin = true}) => {
 
           {/* champs */}
           {isLogin ? null :
-            <Champ title="Username" name='username'/>
+            <Champ value={username} onChange={(e)=>setUsername(e.target.value)} title="Username" name='username'/>
           }
-          <Champ title="Email" name='email' type="email"/>
-          <Champ title="Password" name='password' type="password"/>
+          <Champ value={email} onChange={(e)=>setEmail(e.target.value)} title="Email" name='email' type="email"/>
+          <Champ value={password} onChange={(e)=>setPassword(e.target.value)} title="Password" name='password' type="password"/>
 
           {/* button */}
           <button className="bg-black text-white
-          px-[40px] py-[10px] rounded-lg w-full my-[20px]">
+          px-[40px] py-[10px] rounded-lg w-full my-[20px]"
+          onClick={handleClick}
+          >
             <span className="pb-[2px] block">{isLogin ? 'Sign in' : 'Sign up'}</span>
           </button>
 

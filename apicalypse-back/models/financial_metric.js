@@ -11,7 +11,7 @@ const FinancialMetric = sequelize.define('FinancialMetric', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'Users', // Ensure this matches the User model
+      model: 'User', 
       key: 'id',
     },
   },
