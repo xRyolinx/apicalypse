@@ -5,4 +5,4 @@ function errorHandler(err, req, res, next) {
     res.status(500).send('Something went Wrong!');
 }
 
-module.exports = errorHandler;
+export default errorHandler;

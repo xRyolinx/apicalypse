@@ -3,6 +3,7 @@ dotenv.config();
 import express from 'express';
 import sequelize from './config/db.js'; 
 import authRoutes from './routes/auth.js';
+import userRoutes from './routes/user.js';
 /*
 import dashboardRoutes from './routes/dashboard.js';
 import expensesRoutes from './routes/expenses.js';
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 /*
 app.use('/dashboard', dashboardRoutes);
 app.use('/expenses', expensesRoutes);

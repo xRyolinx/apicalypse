@@ -6,12 +6,18 @@ import FinancialMetric from './financial_metric.js';
 import FinancialMetricType from './financial_metric_type.js';
 import UserMetrics from './user_metrics.js';
 import MetricInsights from './metric_insights.js';
+import Expense from './expense.js';
 
 // Define relationships
 User.hasMany(FinancialReport, { foreignKey: 'user_id' });
 User.hasMany(FinancialMetric, { foreignKey: 'user_id' });
 User.hasMany(UserMetrics, { foreignKey: 'user_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
+
+Expense.belongsTo(User, {
+    foreignKey: 'user_id'
+  });
+
 
 FinancialMetric.belongsTo(FinancialMetricType, { foreignKey: 'metric_type_id' });
 FinancialMetric.hasMany(MetricInsights, { foreignKey: 'financial_metric_id' });
