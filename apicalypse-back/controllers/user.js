@@ -1,5 +1,3 @@
-import pkg from 'xlsx';
-const { readFile, utils } = pkg;
 import { User, FinancialMetric, Expense } from '../models/index.js';
 
 // Method for uploading financial data (file upload)
@@ -9,7 +7,7 @@ export async function addFinancialData(req, res) {
       return res.status(400).send('No file uploaded.');
     }
 
-    // Read the uploaded Excel file
+   /* // Read the uploaded Excel file
     const workbook = readFile(req.file.path);
 
     // Assuming your Excel sheet names are "Expenses" and "FinancialMetrics"
@@ -18,7 +16,7 @@ export async function addFinancialData(req, res) {
 
     // Parse sheet into JSON
     const expensesData = utils.sheet_to_json(expensesSheet);
-    const metricsData = utils.sheet_to_json(metricsSheet);
+    const metricsData = utils.sheet_to_json(metricsSheet);*/
 
     // Insert expenses into the database
     for (const expense of expensesData) {
