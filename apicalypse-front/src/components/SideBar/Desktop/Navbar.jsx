@@ -12,6 +12,7 @@ import HomeIcon from "./icons/HomeIcon";
 import ActivityIcon from "./icons/ActivityIcon";
 import SendIcon from "./icons/SendIcon";
 import WalletIcon from "./icons/WalletIcon"
+import { authStore } from "../../../state/authStore";
 
 
 
@@ -60,6 +61,9 @@ const Navbar = () => {
         setToggle(false)
     }, [path, setToggle])
 
+    // logout
+    const {logout} = authStore()
+
     // component
     return (
         <nav className="hidden h-[100vh] w-[350px] bg-main p-[20px]
@@ -97,7 +101,7 @@ const Navbar = () => {
                 {/* nav Logout */}
                 <div className={`flex bg-red-00 h-[20%] justify-center items-center`}>
                     <button className="bg-black text-white rounded-full px-[40px] py-[10px]"
-                    onClick={()=>navigate('/signup')}>
+                    onClick={logout}>
                         <span className="pb-[1px] block">Logout</span>
                     </button>
                 </div>
