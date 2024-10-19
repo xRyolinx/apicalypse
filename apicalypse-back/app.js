@@ -16,11 +16,22 @@ const app = express();
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} request to ${req.url}`);
+  next(); // Call the next middleware or route handler
+});
+
+// // Test route
+// app.get('/test', (req, res) => {
+//   res.send('Test route');
+// });
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/reports', reportsRoutes);
-app.use('/insights', insightsRoutes);
+app.use('/api/reportInsights', insightsRoutes);
 
 /*
 app.use('/dashboard', dashboardRoutes);
