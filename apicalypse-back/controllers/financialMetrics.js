@@ -22,4 +22,5 @@ const getFinancialMetrics = async (req, res) => {
     }
 };
 
+
 export { createFinancialMetric, getFinancialMetrics };
