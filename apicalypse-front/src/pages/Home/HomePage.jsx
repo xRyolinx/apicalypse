@@ -38,7 +38,7 @@ const HomePage = () => {
 
             {/* desc */}
             <p className="text-[20px] text-gris-200">
-              FinanceOT provides reliable financial services for various business needs powered by the latest AI. We are pioneers in this service field, and the best among others.
+              FinanceIT provides reliable financial services for various business needs powered by the latest AI. We are pioneers in this service field, and the best among others.
             </p>
 
             {/* buttons */}
