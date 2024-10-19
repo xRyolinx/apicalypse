@@ -1,5 +1,3 @@
-
-
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
@@ -13,7 +11,7 @@ const UserMetrics = sequelize.define('UserMetrics', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'Users',
+      model: 'Users', // Ensure this matches the User model
       key: 'id',
     },
   },
@@ -21,7 +19,7 @@ const UserMetrics = sequelize.define('UserMetrics', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'FinancialMetrics',
+      model: 'FinancialMetric', 
       key: 'id',
     },
   },

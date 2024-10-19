@@ -1,4 +1,3 @@
-
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
@@ -12,17 +11,13 @@ const FinancialMetric = sequelize.define('FinancialMetric', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'Users',
+      model: 'User', 
       key: 'id',
     },
   },
-  metric_type_id: {
-    type: DataTypes.UUID,
+  metric_type: {
+    type: DataTypes.ENUM('income statement', 'cash flow', 'revenue', 'marketing'),
     allowNull: false,
-    references: {
-      model: 'FinancialMetricType',
-      key: 'id',
-    },
   },
   category: {
     type: DataTypes.STRING,
