@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import ExpenseCard from './ExpenseCard';
 import { LineChart } from '@mui/x-charts';
 import { getExpenses } from '../../api/expenses';
+import { useNavigate } from "react-router-dom";
 
 const ExpensePage = () => {
+    const navigate = useNavigate()
     const [expenses, setExpenses] = useState([]);
 
     useEffect(() => {
@@ -24,6 +26,7 @@ const ExpensePage = () => {
                 <h1 className='font-bold text-[20px] pt-[10px] mb-[15px]'>Recent Transactions</h1>
 
                 {/* tabs */}
+                <div className='flex justify-between items-center flex-wrap gap-y-[20px]'>
                 <div className='flex justify-start items-center bg-red-00'>
                     <p className='font-semibold border-solid border-[3px] border-transparent border-b-slate-600
                       min-w-[120px] text-center px-[20px] py-[5px] text-[13px]'>
@@ -37,6 +40,12 @@ const ExpensePage = () => {
                       min-w-[120px] text-center px-[20px] py-[5px] text-[13px]'>
                         Expense
                     </p>
+                </div>
+                <div className='bg-red-00'>
+                    <button onClick={()=>navigate('/upload')} className='block px-[30px] py-[10px] rounded-lg bg-black text-white'>
+                        Upload File
+                    </button>
+                </div>
                 </div>
 
                 {/* transactions */}
