@@ -83,16 +83,16 @@ This project is a **financial management platform** designed to provide real-tim
 
 ## 📋 Feature Breakdown
 
-| **Feature**                      | **Technologies**            | **Purpose**                                           |
-|-----------------------------------|-----------------------------|-------------------------------------------------------|
-| **🔐 Authentication & Authorization** | JWT, bcrypt                 | Secure access and role-based permissions.             |
-| **🌐 Landing Page**               | React, CSS                  | Attract potential clients and introduce product features. |
-| **📊 Real-Time Dashboard**        | WebSockets, Chart.js        | Display live financial metrics (cash flow, expenses, etc.). |
-| **📝 Expense Tracking**           | FastAPI, PostgreSQL/MongoDB | Log and categorize company expenses.                  |
-| **📄 Financial Reporting**        | Pandas, PDFKit              | Generate financial reports with export options.       |
-| **🤖 AI Insights**                | Scikit-learn, Pandas        | Provide predictions and recommendations based on data.|
-| **🗄️ Database**                  | PostgreSQL/MongoDB          | Store users, expenses, and financial data securely.   |
-| **⚙️ Scalability**               | Docker, Kubernetes          | Allow easy scaling for increased traffic and data.    |
+| **Feature**                      |**Purpose**                                           |
+|-----------------------------------|-------------------------------------------------------|
+| **🔐 Authentication & Authorization** | Secure access and role-based permissions.             |
+| **🌐 Landing Page**               | Attract potential clients and introduce product features. |
+| **📊 Real-Time Dashboard**        | Display live financial metrics (cash flow, expenses, etc.). |
+| **📝 Expense Tracking**           | Log and categorize company expenses.                  |
+| **📄 Financial Reporting**        | Generate financial reports with export options.       |
+| **🤖 AI Insights**                | Provide predictions and recommendations based on data.|
+| **🗄️ Database**                  | Store users, expenses, and financial data securely.   |
+| **⚙️ Scalability**               | Allow easy scaling for increased traffic and data.    |
 
 ---
 
