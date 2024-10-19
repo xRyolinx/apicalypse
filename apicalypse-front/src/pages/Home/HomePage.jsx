@@ -7,7 +7,7 @@ import LogoSlider from "./LogoSlider"
 import ServiceCard from "./ServiceCard";
 import StatCard from "./StatCard";
 import ClientCard from "./ClientCard";
-
+import { useNavigate } from "react-router-dom";
 
 import imgService1 from "../../assets/img/services/service1.png"
 import imgService2 from "../../assets/img/services/service2.png"
@@ -19,6 +19,7 @@ import client2 from "../../assets/img/clients/client2.png"
 import client3 from "../../assets/img/clients/client3.png"
 
 const HomePage = () => {
+  const navigate = useNavigate()
 
   return (
     <main className="w-full pt-[20px]">
@@ -47,7 +48,9 @@ const HomePage = () => {
               {/* black */}
               <button className="flex justify-center items-center
               bg-black px-[20px] pb-[8px] pt-[10px] rounded-full
-              gap-x-[5px]">
+              gap-x-[5px]"
+              onClick={()=>navigate('/signup')}
+              >
                 <p className="pb-[5px] text-white font-semibold">Get started now</p>
                 <MdArrowRightAlt className="text-[25px] text-white" />
               </button>
@@ -157,7 +160,7 @@ const HomePage = () => {
           </div>
 
           {/* button */}
-          <button className="block mx-auto bg-black text-white
+          <button onClick={()=>navigate('/signup')} className="block mx-auto bg-black text-white
           px-[30px] py-[10px] rounded-full mt-[20px] mb-[40px]">
             <span className="pb-[2px] block">Start for free</span>
           </button>

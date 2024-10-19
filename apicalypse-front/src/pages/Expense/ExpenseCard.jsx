@@ -81,14 +81,14 @@ const ExpenseCard = ({ description, category, date, amount, shortcut, insight, r
             <div className={`${h} rounded-xl overflow-hidden max-w-full
             ${px} ${py} bg-main ${mt}`}>
                 {/* assistant */}
-                <div className='flex gap-x-[10px] justify-start items-center
+                <div className='flex gap-x-[10px] justify-start items-start
                 pb-[10px]'>
                     {/* img */}
                     <div className='h-[30px] aspect-square truncate'>
-                        <img className='h-full mx-auto block object-cover' src={aiLogo} alt="" />
+                        <img className='h-full mx-auto block' src={aiLogo} alt="" />
                     </div>
                     <div>
-                        <p className='font-semibold'>AI assistant</p>
+                        <p className='font-semibold pt-[2px]'>AI assistant</p>
                         <p>{insight}</p>
                     </div>
                 </div>

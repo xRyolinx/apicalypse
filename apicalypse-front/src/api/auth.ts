@@ -8,7 +8,8 @@ export const userLogin = (email: string, password: string) => {
     email: email,
     password: password,
   };
-  return axios.post(`${ApiUrl}/auth/login/`, data);
+  return axios.post(`${ApiUrl}/auth/login/`, data)
+  .then((res) => res.data);
 }
 
 
@@ -20,5 +21,6 @@ export const userRegister = (username: string, email: string, password: string) 
     role: "user",
   };
   console.log(email, password);
-  return axios.post(`${ApiUrl}/auth/register`, data);
+  return axios.post(`${ApiUrl}/auth/register`, data)
+  .then((res) => res.data);
 }

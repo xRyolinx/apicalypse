@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Template = ({isLogin = true}) => {
+  const navigate = useNavigate()
   const {saveToken} = authStore()
 
   const Line = ({className, ...rest}) => {
@@ -24,13 +25,14 @@ const Template = ({isLogin = true}) => {
   const handleClick = () => {
     if (isLogin) {
       userLogin(email, password)
-      .then((res)=>res.data)
       .then((data) => {
         saveToken(data['token'])
-        console.log("connected !")
       })
     } else {
       userRegister(username, email, password)
+      .then((data)=>{
+        saveToken(data['token'])
+      })
     }
   }
 
