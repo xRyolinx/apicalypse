@@ -2,8 +2,9 @@ import { FinancialReport } from '../models/index.js';
 
 // Create a new financial report
 const createFinancialReport = async (req, res) => {
-    const { start_date, end_date, report_type, content } = req.body;
-    const user_id = req.userId; // Get userId from the JWT in the request
+    const { start_date, end_date, report_type } = req.body;
+    
+    const user_id = req.userId; 
 
     try {
         const newReport = await FinancialReport.create({

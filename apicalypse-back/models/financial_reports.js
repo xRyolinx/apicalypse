@@ -11,7 +11,7 @@ const FinancialReport = sequelize.define('FinancialReport', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'User', // Ensure this matches the User model
+      model: 'User', 
       key: 'id',
     },
   },
