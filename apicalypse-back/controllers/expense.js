@@ -34,6 +34,7 @@ const getExpenses = async (req, res) => {
           'id',
           'user_id',
           'category',
+          'description',
           'amount',
           'percentage_change',
           'insight',
