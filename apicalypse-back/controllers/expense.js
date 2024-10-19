@@ -1,4 +1,6 @@
 import  { Expense } from '../models/index.js';
+import { Op } from 'sequelize'; 
+
 
 // Create a new expense entry
 const createExpense = async (req, res) => {
@@ -47,28 +49,28 @@ const getExpenses = async (req, res) => {
   };
   
 
-// Get expenses by time period
-const getExpensesByTimePeriod = async (req, res) => {
-  // Implementation for getExpensesByTimePeriod
+  const getExpensesByTimePeriod = async (req, res) => {
     try {
-        const { start_date, end_date } = req.query;
+        const { start_date, end_date } = req.body.query;
         const userId = req.userId;
-    
+
         const expenses = await Expense.findAll({
-        where: {
-            user_id: userId,
-            expense_date: {
-            [Op.gte]: start_date,
-            [Op.lte]: end_date,
+            where: {
+                user_id: userId,
+                expense_date: {
+                    [Op.gte]: start_date,
+                    [Op.lte]: end_date,
+                },
             },
-        },
         });
-    
+
         res.json(expenses);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching expenses', error });
+        console.error('Error fetching expenses:', error); // Log the error for debugging
+        res.status(500).json({ message: 'Error fetching expenses', error: error.message }); // Send error message in response
     }
 };
+
 
 // Create multiple expenses
 const createMultipleExpenses = async (req, res) => {
