@@ -23,7 +23,7 @@ export const authenticateJWT = (req, res, next) => {
     } else if (error.name === 'JsonWebTokenError') {
         return res.status(401).json({ error: 'Invalid Token' });
     } else {
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(401).json({ error: 'unauthorized' });
     }
 }
 };;
