@@ -1,22 +1,35 @@
 import { FinancialMetric, MetricInsights, Expense } from '../models/index.js';
 import sequelize from '../config/db.js';
+import { Op } from 'sequelize'; 
 
 export const generateReportContent = async (req, res) => {
   try {
-    const { user_id, metric_types, start_date, end_date } = req.body; 
-
-    // Fetch the financial metrics based on multiple metric types, date, and user
+    const { metric_types, start_date, end_date } = req.body;
+    const user_id =req.userId
+    console.log('Received metric_types:', metric_types);
     const financialMetrics = await FinancialMetric.findAll({
       where: {
         user_id: user_id,
-        metric_type: {
-          [sequelize.Op.in]: metric_types, // Use Op.in for multiple metric types as strings
-        },
+ 
+         [Op.or]:[
+            {metric_type: metric_types[0]},
+            {metric_type: metric_types[1]},
+            {metric_type: metric_types[2]},
+         ],
         created_at: {
-          [sequelize.Op.between]: [start_date, end_date],
+          [Op.between]: [start_date, end_date],
         },
       },
     });
+
+    console.log('Fetched financial metrics:', financialMetrics);
+
+    if (financialMetrics.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'No financial metrics found for the specified criteria.',
+      });
+    }
 
     // Initialize the response data object
     let reportContent = {
@@ -53,15 +66,26 @@ export const generateReportContent = async (req, res) => {
     }
 
     // If any of the selected metric types is "Expenses", fetch the expenses data
-    if (metric_types.includes('Expenses')) { // Check if "Expenses" is among the selected types
-      const expenses = await Expense.findAll({
-        where: {
-          user_id: user_id,
-          expense_date: {
-            [sequelize.Op.between]: [start_date, end_date],
+    if (metric_types.includes('Expenses')) {
+        const expenses = await Expense.findAll({
+          attributes: [
+            'category',
+            'amount',
+            'percentage_change',
+            'insight',
+            'recommendation',
+            'shortcut',
+            'expense_date',
+          ],
+          where: {
+            user_id: user_id,
+            expense_date: {
+              [Op.gte]: start_date,
+              [Op.lte]: end_date,
+            },
           },
-        },
-      });
+        }); 
+      
 
       expenses.forEach((expense) => {
         reportContent.expenses.push({
@@ -90,3 +114,4 @@ export const generateReportContent = async (req, res) => {
     });
   }
 };
+
