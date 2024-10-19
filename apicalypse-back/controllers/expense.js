@@ -5,13 +5,14 @@ import { Op } from 'sequelize';
 // Create a new expense entry
 const createExpense = async (req, res) => {
   try {
-    const {category, amount, percentage_change, expense_date } = req.body; 
-    const user_id = req.userId; 
+    const {  category,description, amount, percentage_change, expense_date } = req.body;
+    const user_id = req.userId;  
 
     const newExpense = await Expense.create({
       user_id,
       category,
       amount,
+      description,
       percentage_change, 
       expense_date,
     });
