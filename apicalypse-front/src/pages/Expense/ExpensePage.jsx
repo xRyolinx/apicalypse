@@ -7,8 +7,11 @@ const ExpensePage = () => {
     const [expenses, setExpenses] = useState([]);
 
     useEffect(() => {
-        const data = getExpenses()
-        setExpenses(data)
+        getExpenses()
+        .then((data) => {
+            console.log(data)
+            setExpenses(data)
+        })
     }, []);
     
 
@@ -53,11 +56,13 @@ const ExpensePage = () => {
                             {expenses.length > 0 ? expenses.map((expense, i) => (
                                 <ExpenseCard
                                     key={i}
-                                    description="google ads"
+                                    description={expense.description}
                                     category={expense.category}
                                     date={expense.expense_date}
                                     amount={expense.amount}
-                                    ai={expense.shortcut}  
+                                    shortcut={expense.shortcut}  
+                                    recommandation={expense.recommendation}
+                                    insight={expense.insight}
                                 />
                             )) : <p>No transactions found.</p>}
                         </div>

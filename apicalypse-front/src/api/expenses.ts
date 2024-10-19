@@ -1,11 +1,20 @@
 import axios from 'axios';
 import { API_KEY } from '../config/env';
-const ApiUrl = API_KEY
 
+const store = localStorage.getItem('jwt')
 export const getExpenses = () => {
-    return axios.get('/api/user/expenses')  
+    if (!store) {
+        return []
+    }
+    const jwt = JSON.parse(store)['state']['token']
+    
+    const ApiUrl = `${API_KEY}/users/expenses/`
+    return axios.get(ApiUrl, {
+        headers: {
+            Authorization: `Bearer ${jwt}`,
+        },
+    })  
     .then(response => {
-        console.log('API Response:', response.data); 
         if (Array.isArray(response.data)) {
             return response.data;
         } else {

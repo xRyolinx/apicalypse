@@ -2,7 +2,7 @@ import {useState} from 'react'
 import arrow from "../../assets/img/expenses/arrow.svg"
 import aiLogo from "../../assets/img/expenses/aiLogo.svg"
 
-const ExpenseCard = ({ ai }) => {
+const ExpenseCard = ({ description, category, date, amount, shortcut, insight, recommandation }) => {
     const [toggle, setToggle] = useState(false)
 
     const h = toggle ? '' : 'h-0'
@@ -26,20 +26,20 @@ const ExpenseCard = ({ ai }) => {
                         <img className='h-auto mx-auto object-cover' src={arrow} alt="" />
                     </div>
                     {/* txt */}
-                    <p>Paid for Google Ads campaign</p>
+                    <p>{description}</p>
                 </div>
 
                 {/* category */}
-                <p className='w-[15%]'>Marketing</p>
+                <p className='w-[15%]'>{category}</p>
 
                 {/* Date */}
-                <p className='w-[20%]'>28 Jan, 12.30 AM</p>
+                <p className='w-[20%]'>{date}</p>
 
                 {/* Amount */}
-                <p className='text-green-600 w-[15%] font-semibold'>+$750</p>
+                <p className='text-green-600 w-[15%] font-semibold'>{amount}</p>
 
                 {/* Ai */}
-                <p className='text-red-600 bg-red-200 rounded-full py-[5px] px-[10px] max-w-[25%] font-semibold px-'>Way over the budget</p>
+                <p className='text-red-600 bg-red-200 rounded-full py-[5px] px-[10px] max-w-[25%] font-semibold px-'>{shortcut}</p>
             </div>
 
             {/* ai part */}
@@ -55,7 +55,7 @@ const ExpenseCard = ({ ai }) => {
                     </div>
                     <div>
                         <p className='font-semibold'>AI assistant</p>
-                        <p>This marketing expense is 20% higher than last month. Consider optimizing campaign targeting to reduce costs.</p>
+                        <p>{insight}</p>
                     </div>
                 </div>
                 {/* recommandation */}
@@ -66,7 +66,7 @@ const ExpenseCard = ({ ai }) => {
                     w-full bg-main'>
 
                     <p className='font-semibold pb-[5px]'>✨ Recommanded by AI</p>
-                    <p>Analyze the performance of individual ad channels and reallocate budget towards the ones generating the highest conversion rates. You can also test different ad creatives and adjust keyword bidding strategies to improve cost-efficiency. Additionally, consider leveraging A/B testing to identify high-performing campaigns and pause low-performing ones.</p>
+                    <p>{recommandation}</p>
                     </div>
                 </div>
             </div>
