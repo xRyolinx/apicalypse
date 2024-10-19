@@ -1,6 +1,4 @@
-Here's your README with emojis added to enhance its presentation:
 
----
 
 # 💰 Financial Management Platform - README
 
