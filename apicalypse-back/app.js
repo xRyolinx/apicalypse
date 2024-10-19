@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/reports', reportsRoutes);
+app.use('/api/reports', reportsRoutes);
 app.use('/api/reportInsights', insightsRoutes);
 
 /*

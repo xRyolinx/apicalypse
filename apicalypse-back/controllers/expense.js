@@ -3,13 +3,14 @@ import  { Expense } from '../models/index.js';
 // Create a new expense entry
 const createExpense = async (req, res) => {
   try {
-    const { user_id, category, amount, percentage_change, expense_date } = req.body; 
+    const { user_id, category,description, amount, percentage_change, expense_date } = req.body; 
 
     const newExpense = await Expense.create({
       user_id,
       category,
       amount,
-      percentage_change, // Use the given percentage_change from the request
+      description,
+      percentage_change, 
       expense_date,
     });
 

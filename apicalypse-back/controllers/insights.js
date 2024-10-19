@@ -1,21 +1,21 @@
-import { FinancialMetric, MetricInsights, Expense } from '../models/index.js';
+import { FinancialMetric, MetricInsights, Expense, FinancialReport } from '../models/index.js';
 import sequelize from '../config/db.js';
 import { Op } from 'sequelize'; 
 
 export const generateReportContent = async (req, res) => {
   try {
-    const { metric_types, start_date, end_date } = req.body;
-    const user_id =req.userId
+    const { metric_types, start_date, end_date, report_type_id } = req.body; // Added report_type_id
+    const user_id = req.userId;
     console.log('Received metric_types:', metric_types);
+    
     const financialMetrics = await FinancialMetric.findAll({
       where: {
         user_id: user_id,
- 
-         [Op.or]:[
-            {metric_type: metric_types[0]},
-            {metric_type: metric_types[1]},
-            {metric_type: metric_types[2]},
-         ],
+        [Op.or]: [
+          { metric_type: metric_types[0] },
+          { metric_type: metric_types[1] },
+          { metric_type: metric_types[2] },
+        ],
         created_at: {
           [Op.between]: [start_date, end_date],
         },
@@ -67,25 +67,25 @@ export const generateReportContent = async (req, res) => {
 
     // If any of the selected metric types is "Expenses", fetch the expenses data
     if (metric_types.includes('Expenses')) {
-        const expenses = await Expense.findAll({
-          attributes: [
-            'category',
-            'amount',
-            'percentage_change',
-            'insight',
-            'recommendation',
-            'shortcut',
-            'expense_date',
-          ],
-          where: {
-            user_id: user_id,
-            expense_date: {
-              [Op.gte]: start_date,
-              [Op.lte]: end_date,
-            },
+      const expenses = await Expense.findAll({
+        attributes: [
+          'category',
+          'amount',
+          'description',
+          'percentage_change',
+          'insight',
+          'recommendation',
+          'shortcut',
+          'expense_date',
+        ],
+        where: {
+          user_id: user_id,
+          expense_date: {
+            [Op.gte]: start_date,
+            [Op.lte]: end_date,
           },
-        }); 
-      
+        },
+      });
 
       expenses.forEach((expense) => {
         reportContent.expenses.push({
@@ -100,10 +100,23 @@ export const generateReportContent = async (req, res) => {
       });
     }
 
-    // Return the JSON response
+    // Prepare the report content to save in the FinancialReport model
+    const reportText = JSON.stringify(reportContent, null, 2); // Converts reportContent to a JSON string
+
+    // Create a new financial report entry
+    const newReport = await FinancialReport.create({
+      user_id: user_id,
+      report_type_id: report_type_id, // Use the report_type_id from the request
+      start_date: start_date,
+      end_date: end_date,
+      content: reportText,
+    });
+
+    // Return the JSON response with the report ID
     res.json({
       success: true,
       report: reportContent,
+      reportId: newReport.id, // Return the ID of the created report
     });
 
   } catch (error) {
@@ -114,4 +127,3 @@ export const generateReportContent = async (req, res) => {
     });
   }
 };
-

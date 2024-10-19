@@ -18,6 +18,12 @@ const Expense = sequelize.define('Expense', {
     },
     comment: 'Reference to the user who logged the expense',
   },
+  description:{
+    type: DataTypes.STRING,
+    allowNull: false,
+    comment: 'Description of the expense',
+  },
+
   category: {
     type: DataTypes.STRING,
     allowNull: false,

@@ -15,14 +15,6 @@ const FinancialReport = sequelize.define('FinancialReport', {
       key: 'id',
     },
   },
-  report_type_id: {
-    type: DataTypes.UUID,
-    allowNull: false,
-    references: {
-      model: 'ReportTypes', // Ensure this matches the ReportType model
-      key: 'report_id',
-    },
-  },
   start_date: {
     type: DataTypes.DATE,
     allowNull: false,
