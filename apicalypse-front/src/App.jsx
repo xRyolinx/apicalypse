@@ -15,6 +15,8 @@ import DashboardPage from './pages/Dashboard/DashboardPage'
 import ExpensePage from './pages/Expense/ExpensePage'
 import { authStore } from './state/authStore'
 import { Navigate } from 'react-router-dom'
+import ReportPage from './pages/Report/ReportPage'
+import PredictedPage from './pages/Predicted/PredictedPage'
 
 function App() {
   // Centralize the authentication logic
@@ -50,8 +52,8 @@ function App() {
         <Route element={<RequireAuth><UserTemplate /></RequireAuth>}>
           <Route path='dashboard' element={<DashboardPage />}></Route>
           <Route path='expense-tracking' element={<ExpensePage />}></Route>
-          <Route path='predicted-expenses' element={<DashboardPage />}></Route>
-          <Route path='reports-generator' element={<DashboardPage />}></Route>
+          <Route path='predicted-expenses' element={<PredictedPage />}></Route>
+          <Route path='reports-generator' element={<ReportPage />}></Route>
           <Route path='upload' element={<UploadPage />}></Route>
         </Route>   
         {/* not found */}
