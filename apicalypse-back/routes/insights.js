@@ -4,6 +4,6 @@ import { authenticateJWT } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/reports/content', authenticateJWT, generateReportContent); 
+router.get('/insights/content', authenticateJWT, generateReportContent); 
 
 export default router;
